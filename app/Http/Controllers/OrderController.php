@@ -4,24 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\OrderRequest;
 use App\Http\Resources\BondResource;
-use App\Repositories\BondRepository;
+use App\Http\Resources\OrderResource;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
-class BondController extends Controller
+class OrderController extends Controller
 {
-    public function __construct(private BondRepository $repository)
-    {
-    }
 
-    public function bondPaymentDates(int $id): JsonResponse|BondResource
+    public function store(int $id, OrderRequest $orderRequest): JsonResponse|OrderResource
     {
         try {
-            return new BondResource($this->repository->getById($id));
+            return new OrderResource();
         }catch (HttpException $exception){
             return response()->json($exception->getMessage(), $exception->getStatusCode());
         }
     }
-
 }
