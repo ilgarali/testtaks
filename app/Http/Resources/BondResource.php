@@ -7,6 +7,8 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class BondResource extends JsonResource
 {
+    public static $wrap = null;
+
     private float $periodDurationByDay = 0;
     private float $periodDurationByMonth = 0;
     private array $dates = [];
@@ -47,14 +49,16 @@ class BondResource extends JsonResource
 
     public function calculateByDate($nextPaymentDate, $day = true)
     {
+        $i = 0;
         while ($nextPaymentDate < $this->last_circulation_date){
             if ($nextPaymentDate->format('D') == 'Sat') {
-                $this->dates[] = $nextPaymentDate->addDays(2)->format('Y-m-d');
+                $this->dates[$i]['date'] = $nextPaymentDate->addDays(2)->format('Y-m-d');
             }elseif ($nextPaymentDate->format('D') == 'Mon'){
-                $this->dates[] = $nextPaymentDate->addDay()->format('Y-m-d');
+                $this->dates[$i]['date'] = $nextPaymentDate->addDay()->format('Y-m-d');
             }else {
-                $this->dates[] = $nextPaymentDate->format('Y-m-d');
+                $this->dates[$i]['date'] = $nextPaymentDate->format('Y-m-d');
             }
+            $i++;
             $nextPaymentDate = $day ?
                 Carbon::parse($nextPaymentDate)->addDays($this->periodDurationByDay)
                 :
