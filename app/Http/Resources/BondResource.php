@@ -34,18 +34,18 @@ class BondResource extends JsonResource
 
         if ($this->periodDurationByDay != 0) {
             $nextPaymentDate = Carbon::parse($this->date_of_issue)->addDays($this->periodDurationByDay);
-            $this->calculateBy($nextPaymentDate, true);
+            $this->calculateByDate($nextPaymentDate, true);
         }
         if ($this->periodDurationByMonth != 0) {
             $nextPaymentDate = Carbon::parse($this->date_of_issue)->addMonths($this->periodDurationByMonth);
 
-            $this->calculateBy($nextPaymentDate, false);
+            $this->calculateByDate($nextPaymentDate, false);
         }
 
 
     }
 
-    public function calculateBy($nextPaymentDate, $day = true)
+    public function calculateByDate($nextPaymentDate, $day = true)
     {
         while ($nextPaymentDate < $this->last_circulation_date){
             if ($nextPaymentDate->format('D') == 'Sat') {
