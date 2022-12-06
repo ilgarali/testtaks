@@ -19,3 +19,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/bond/{id}', [BondController::class, 'bondPaymentDates']);
 Route::post('/bond/{id}/order', [OrderController::class, 'store']);
+Route::post('/bond/order/{order}', [OrderController::class, 'bondOrderPayments']);

@@ -42,4 +42,9 @@ class OrderRequest extends FormRequest
     {
         return  (int)$this->number_of_bonds_bought;
     }
+
+    public function getId(): int
+    {
+        return (int)$this->id;
+    }
 }

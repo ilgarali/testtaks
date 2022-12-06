@@ -3,17 +3,18 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use JetBrains\PhpStorm\ArrayShape;
 
 class OrderResource extends JsonResource
 {
-    /**
-     * Transform the resource into an array.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
-     */
-    public function toArray($request)
+
+    public function toArray($request): array
     {
-        return parent::toArray($request);
+        return [
+            'id'                         => $this->id,
+            'order_date'                 => $this->order_date,
+            'number_of_bonds_bought'     => $this->number_of_bonds_bought,
+            'bond'                       => new BondResource($this->bond),
+        ];
     }
 }
