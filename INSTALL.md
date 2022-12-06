@@ -1,4 +1,4 @@
-Clone the project. git clonne https://github.com/ilgarali/testtaks.git
+Clone the project. git clone https://github.com/ilgarali/testtaks.git
 Create .env file.
 Copy everything from the .env.example into .env.
 Change these credentials according to your environment
