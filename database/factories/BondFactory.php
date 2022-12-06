@@ -22,7 +22,7 @@ class BondFactory extends Factory
         return [
             'date_of_issue'                        => Carbon::now()->addDays(rand(1,10)),
             'last_circulation_date'                => Carbon::now()->addMonths(rand(15,36)),
-            'price'                                => rand(5,99),
+            'price'                                => rand(80,100),
             'frequency_of_payment'                 => $frequency_of_payment[array_rand($frequency_of_payment)],
             'period_of_calculation_of_percentages' => $period_of_calculation_of_percentages[array_rand($period_of_calculation_of_percentages)],
             'coupon_rate'                          => rand(0,100),
