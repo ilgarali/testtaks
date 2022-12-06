@@ -14,7 +14,6 @@ class PayoutResource extends JsonResource
 
     public function toArray($request): array
     {
-        $this->calculateInterest();
         return [
             'payouts' => $this->calculateInterest()
         ];
