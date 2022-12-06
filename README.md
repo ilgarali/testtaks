@@ -1,3 +1,5 @@
+You can find installation instructions in INSTALL.md file.
+
 After migrating and seeding db, you'll have 10 bonds and 10 orders.
 
 You can have a look Bond Interest Payment Dates by these urls. Change {id} to 1-10.
